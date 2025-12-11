@@ -1,0 +1,39 @@
+{
+  "name": "@praisecodes/rn-calendar",
+  "version": "1.0.0",
+  "description": "Customizable react native calendar for your apps.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Praisecodes/rn-calendar.git"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "calendar",
+    "rn-calendar",
+    "react-native-calendar",
+    "calendar-package",
+    "customizable-calendar"
+  ],
+  "author": "Praise Codes & Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Praisecodes/rn-calendar/issues"
+  },
+  "homepage": "https://github.com/Praisecodes/rn-calendar#readme",
+  "peerDependencies": {
+    "@types/react-native": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.0",
+    "typescript": "^5.9.3",
+    "@expo/vector-icons": "^15.0.3"
+  }
+}
