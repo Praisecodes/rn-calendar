@@ -34,7 +34,7 @@ export function chunkArray<T>(
   return chunks;
 }
 
-const Calendar: React.FC<CalendarProps> = ({
+const RNCalendar: React.FC<CalendarProps> = ({
   availableDays = [],
   selectedDate,
   onDatePress,
@@ -238,4 +238,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Calendar;
+export default RNCalendar;
