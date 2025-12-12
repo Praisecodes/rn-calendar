@@ -30,9 +30,7 @@
   "peerDependencies": {
     "@types/react-native": "*",
     "react": "*",
-    "react-native": "*",
-    "react-native-vector-icons": "*",
-    "@types/react-native-vector-icons": "*"
+    "react-native": "*"
   },
   "devDependencies": {
     "@types/node": "^25.0.0",

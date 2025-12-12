@@ -6,7 +6,6 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type CalendarProps = {
   availableDays?: Date[];
@@ -138,19 +137,15 @@ const RNCalendar: React.FC<CalendarProps> = ({
 
         <View style={{ display: "flex", flexDirection: "row" }}>
           <TouchableOpacity onPress={() => handleMonthChange('prev')}>
-            <MaterialCommunityIcons
-              name='chevron-left'
-              size={24}
-              color='#34755E'
-            />
+            <Text>
+              {"<"}
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => handleMonthChange('next')}>
-            <MaterialCommunityIcons
-              name='chevron-right'
-              size={24}
-              color='#34755E'
-            />
+            <Text>
+              {">"}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
