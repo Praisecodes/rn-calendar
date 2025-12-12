@@ -2,7 +2,8 @@
   "name": "@praisecodes/rn-calendar",
   "version": "1.0.0",
   "description": "Customizable react native calendar for your apps.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
@@ -29,11 +30,12 @@
   "peerDependencies": {
     "@types/react-native": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-vector-icons": "*",
+    "@types/react-native-vector-icons": "*"
   },
   "devDependencies": {
     "@types/node": "^25.0.0",
-    "typescript": "^5.9.3",
-    "@expo/vector-icons": "^15.0.3"
+    "typescript": "^5.9.3"
   }
 }

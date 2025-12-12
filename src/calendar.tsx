@@ -6,7 +6,7 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type CalendarProps = {
   availableDays?: Date[];
