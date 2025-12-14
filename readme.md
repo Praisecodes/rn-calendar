@@ -88,6 +88,7 @@ RNCalendar allows you to customize its appearance to match your app’s design.
 | selectedDateColor| string| Selected date text color| No     |
 | calendarTextStyle| string| General text style for dates| No |
 | daysTextStyle    | string| Text style for days of week | No |
+| daysStyle        | string| View style for days of week | No |
 | headerTextStyle  | string| Text style for header       | No |
 
 > Exact props may evolve as the package grows.

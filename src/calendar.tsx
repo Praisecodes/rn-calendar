@@ -42,6 +42,7 @@ const RNCalendar: React.FC<RNCalendarProps> = (props) => {
     calendarTextStyle,
     daysTextStyle,
     headerTextStyle,
+    daysStyle,
   } = props;
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -82,7 +83,7 @@ const RNCalendar: React.FC<RNCalendarProps> = (props) => {
   }
 
   const renderCalendarDay = (date: Date | null, index: number) => {
-    if (!date) return <View key={index} style={{ width: 40, height: 40 }} />;
+    if (!date) return <View key={index} style={{ width: daysStyle?.width ?? 40, height: daysStyle?.height ?? 40 }} />;
 
     const today = new Date();
 
@@ -119,6 +120,7 @@ const RNCalendar: React.FC<RNCalendarProps> = (props) => {
           borderRadius: 22,
           backgroundColor: dateStyle.backgroundColor,
           opacity: canPress ? 1 : 0.5,
+          ...daysStyle
         }}
         onPress={() => canPress && onDatePress?.(date)}
         disabled={!canPress}

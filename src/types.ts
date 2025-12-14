@@ -1,4 +1,4 @@
-import { TextStyle } from "react-native";
+import { TextStyle, ViewStyle } from "react-native";
 
 export type RNCalendarProps = {
   selectedDate?: Date | null;
@@ -12,4 +12,5 @@ export type RNCalendarProps = {
   calendarTextStyle?: TextStyle;
   daysTextStyle?: TextStyle;
   headerTextStyle?: TextStyle;
+  daysStyle?: ViewStyle;
 }
