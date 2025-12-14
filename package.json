@@ -12,8 +12,8 @@
     "url": "git+https://github.com/Praisecodes/rn-calendar.git"
   },
   "files": [
-    "src",
-    "src/assets/angle.png"
+    "dist",
+    "src"
   ],
   "keywords": [
     "react-native",
