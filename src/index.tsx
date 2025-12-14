@@ -1,4 +1,5 @@
 import RNCalendar from "./calendar";
+import { RNCalendarProps } from "./types";
 
-export { RNCalendar };
+export { RNCalendar, RNCalendarProps };
 export default RNCalendar;

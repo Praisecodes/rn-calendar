@@ -6,12 +6,7 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-
-type CalendarProps = {
-  availableDays?: Date[];
-  selectedDate?: Date | null;
-  onDatePress?: (date: Date) => void;
-};
+import { RNCalendarProps } from './types';
 
 export function chunkArray<T>(
   items: T[],
@@ -33,11 +28,21 @@ export function chunkArray<T>(
   return chunks;
 }
 
-const RNCalendar: React.FC<CalendarProps> = ({
-  availableDays = [],
-  selectedDate,
-  onDatePress,
-}) => {
+const RNCalendar: React.FC<RNCalendarProps> = (props) => {
+  const {
+    selectedDate,
+    onDatePress,
+    selectedDateColor,
+    selectedDateBg,
+    currentDateBg,
+    currentDateColor,
+    color,
+    dateBg,
+    calendarTextStyle,
+    daysTextStyle,
+    headerTextStyle,
+  } = props;
+
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const weekDays = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
@@ -76,7 +81,7 @@ const RNCalendar: React.FC<CalendarProps> = ({
   }
 
   const renderCalendarDay = (date: Date | null, index: number) => {
-    if (!date) return <View key={index} style={{ width: 44, height: 44 }} />;
+    if (!date) return <View key={index} style={{ width: 40, height: 40 }} />;
 
     const today = new Date();
 
@@ -84,19 +89,19 @@ const RNCalendar: React.FC<CalendarProps> = ({
       date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
     const isToday = date.toDateString() === today.toDateString();
     const isSelected =
-      selectedDate && date.toDateString() === selectedDate.toDateString();
+      !!selectedDate ? (date.toDateString() === selectedDate.toDateString()) : (date.toDateString() === new Date().toDateString());
 
     const canPress = !isPast;
 
     const getDateStyle = () => {
       if (isSelected) {
-        return { backgroundColor: '#34755E', color: 'white' };
+        return { backgroundColor: selectedDateBg || '#34755E', color: selectedDateColor || 'white' };
       } else if (isPast) {
         return { backgroundColor: 'transparent', color: '#C7C7C7' };
       } else if (isToday) {
-        return { backgroundColor: '#EEF7F4', color: '#34755E' };
+        return { backgroundColor: currentDateBg || '#EEF7F4', color: currentDateColor || '#34755E' };
       } else {
-        return { backgroundColor: '#fff', color: '#000' };
+        return { backgroundColor: dateBg || '#fff', color: color || '#000' };
       }
     };
 
@@ -106,8 +111,8 @@ const RNCalendar: React.FC<CalendarProps> = ({
       <TouchableOpacity
         key={index}
         style={{
-          width: 44,
-          height: 44,
+          width: 40,
+          height: 40,
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 22,
@@ -118,7 +123,11 @@ const RNCalendar: React.FC<CalendarProps> = ({
         disabled={!canPress}
       >
         <Text
-          style={{ color: dateStyle.color, fontSize: 17 }}
+          style={{
+            color: dateStyle.color,
+            fontSize: 17,
+            ...calendarTextStyle,
+          }}
         >
           {date.getDate()}
         </Text>
@@ -130,22 +139,31 @@ const RNCalendar: React.FC<CalendarProps> = ({
     <View style={[styles.container]}>
       {/* Header */}
       <View style={[styles.header]}>
-        <Text style={{ fontSize: 16 }}>
+        <Text
+          style={{
+            fontSize: 16,
+            ...headerTextStyle
+          }}
+        >
           {currentMonth.toLocaleString('default', { month: 'long' })}{' '}
           {currentMonth.getFullYear()}
         </Text>
 
-        <View style={{ display: "flex", flexDirection: "row" }}>
+        <View style={{ display: "flex", flexDirection: "row", gap: 3 }}>
           <TouchableOpacity onPress={() => handleMonthChange('prev')}>
-            <Text>
-              {"<"}
-            </Text>
+            <View style={[styles.monthSwitchBtn]}>
+              <Text>
+                {"<"}
+              </Text>
+            </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => handleMonthChange('next')}>
-            <Text>
-              {">"}
-            </Text>
+            <View style={[styles.monthSwitchBtn]}>
+              <Text>
+                {">"}
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -164,7 +182,8 @@ const RNCalendar: React.FC<CalendarProps> = ({
             <Text
               style={{
                 fontSize: 12,
-                color: "#626262"
+                color: "#626262",
+                ...daysTextStyle,
               }}
             >
               {day}
@@ -183,7 +202,6 @@ const RNCalendar: React.FC<CalendarProps> = ({
               flexDirection: "row",
               alignItems: "center",
               width: "100%",
-              marginTop: 4
             }}
           >
             {dateChunk.map((date, index) => (
@@ -208,7 +226,8 @@ const RNCalendar: React.FC<CalendarProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     borderRadius: 20,
     borderColor: "#333333",
     borderWidth: 0.3,
@@ -219,7 +238,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 24
+    marginBottom: 16
   },
   weekDays: {
     display: 'flex',
@@ -228,8 +247,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   daysGrid: {
-    marginBottom: 32,
     width: "100%",
+  },
+  monthSwitchBtn: {
+    width: 30,
+    height: 30,
+    display: 'flex',
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 100,
   }
 });
 
