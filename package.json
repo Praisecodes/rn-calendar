@@ -5,12 +5,16 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc & npx copyfiles -u 2 \"src/assets/**/*\" dist/assets"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Praisecodes/rn-calendar.git"
   },
+  "files": [
+    "src",
+    "src/assets/angle.png"
+  ],
   "keywords": [
     "react-native",
     "ios",
@@ -37,6 +41,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.0.0",
+    "copyfiles": "^2.4.1",
     "typescript": "^5.9.3"
   }
 }

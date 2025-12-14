@@ -4,7 +4,8 @@ import {
   TouchableOpacity,
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Image
 } from 'react-native';
 import { RNCalendarProps } from './types';
 
@@ -152,17 +153,26 @@ const RNCalendar: React.FC<RNCalendarProps> = (props) => {
         <View style={{ display: "flex", flexDirection: "row", gap: 3 }}>
           <TouchableOpacity onPress={() => handleMonthChange('prev')}>
             <View style={[styles.monthSwitchBtn]}>
-              <Text>
-                {"<"}
-              </Text>
+              <Image
+                source={require("./assets/angle.png")}
+                style={{
+                  width: 20,
+                  height: 20
+                }}
+              />
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => handleMonthChange('next')}>
             <View style={[styles.monthSwitchBtn]}>
-              <Text>
-                {">"}
-              </Text>
+              <Image
+                source={require("./assets/angle.png")}
+                style={{
+                  width: 20,
+                  height: 20,
+                  transform: [{ rotate: "180deg" }]
+                }}
+              />
             </View>
           </TouchableOpacity>
         </View>
