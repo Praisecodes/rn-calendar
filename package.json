@@ -21,12 +21,15 @@
     "calendar-package",
     "customizable-calendar"
   ],
-  "author": "Praise Codes & Williams",
-  "license": "ISC",
+  "author": "Praise Codes <cmancoder@gmail.com> (https://github.com/Praisecodes) & Williams Bolade <dbolade2000@gmail.com> (https://github.com/mach98)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Praisecodes/rn-calendar/issues"
   },
   "homepage": "https://github.com/Praisecodes/rn-calendar#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "peerDependencies": {
     "@types/react-native": "*",
     "react": "*",
