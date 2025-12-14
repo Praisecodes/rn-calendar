@@ -118,14 +118,14 @@ yarn start
 
 Created and maintained by:
 
-* **Praise Codes**
-* **Williams Bolade**
+* [**Praise Codes**](https://github.com/Praisecodes)
+* [**Williams Bolade**](https://github.com/mach98)
 
 ---
 
 ## 📄 License
 
-MIT License © 2025
+[MIT License © 2025](https://github.com/Praisecodes/rn-calendar/blob/main/LICENSE)
 
 ---
 
